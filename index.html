@@ -1,0 +1,66 @@
+<?php
+  // Sample Feature Products Data
+  $products = [
+      ["id" => 1, "name" => "Product 1", "price" => 20, "image" => "img/product1.jpg"],
+      ["id" => 2, "name" => "Product 2", "price" => 25, "image" => "img/product2.jpg"],
+      ["id" => 3, "name" => "Product 3", "price" => 30, "image" => "img/product3.jpg"],
+      ["id" => 4, "name" => "Product 4", "price" => 40, "image" => "img/product4.jpg"],
+      ["id" => 5, "name" => "Product 5", "price" => 50, "image" => "img/product5.jpg"],
+      ["id" => 6, "name" => "Product 6", "price" => 35, "image" => "img/product6.jpg"],
+      ["id" => 7, "name" => "Product 7", "price" => 45, "image" => "img/product7.jpg"],
+      ["id" => 8, "name" => "Product 8", "price" => 55, "image" => "img/product8.jpg"],
+      ["id" => 9, "name" => "Product 9", "price" => 60, "image" => "img/product9.jpg"],
+      ["id" => 10, "name" => "Product 10", "price" => 70, "image" => "img/product10.jpg"],
+      ["id" => 11, "name" => "Product 11", "price" => 80, "image" => "img/product11.jpg"],
+      ["id" => 12, "name" => "Product 12", "price" => 90, "image" => "img/product12.jpg"],
+  ];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feature Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.php">Home</a> | <a href="feature_page.php">Feature Page</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Our Feature Page</h1>
+    </section>
+
+    <!-- Main Section -->
+    <section class="feature-section">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <?php foreach ($products as $product): ?>
+                <div class="product-card" id="product-<?= $product['id'] ?>">
+                    <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+                    <h3><?= $product['name'] ?></h3>
+                    <p>Price: $<?= $product['price'] ?></p>
+                    <button onclick="addToCart(<?= $product['id'] ?>, '<?= $product['name'] ?>', <?= $product['price'] ?>)">Add to Cart</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <!-- Aside (Cart) -->
+    <aside class="cart" id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total Price: $<span id="total-price">0</span></p>
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Feature Page</p>
+    </footer>
+</body>
+</html>
